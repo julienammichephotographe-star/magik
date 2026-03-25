@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet Growth — Accompagnement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --dark: #262624; --orange: #D97857; }
+    body { background: var(--dark); color: #fff; font-family: 'DM Sans', sans-serif; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes glow { 0%, 100% { box-shadow: 0 0 40px rgba(217,120,87,0.15); } 50% { box-shadow: 0 0 80px rgba(217,120,87,0.3); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.2s; } .d3 { animation-delay: 0.3s; } .d4 { animation-delay: 0.4s; }
+
+    .oto-banner { background: rgba(217,120,87,0.1); border-bottom: 1px solid rgba(217,120,87,0.2); padding: 12px 24px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.6); }
+    .oto-banner span { color: var(--orange); font-weight: 500; }
+
+    .hero { padding: 64px 24px 48px; text-align: center; max-width: 720px; margin: 0 auto; position: relative; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse at center, rgba(217,120,87,0.12) 0%, transparent 70%); pointer-events: none; }
+    .badge { display: inline-block; background: rgba(217,120,87,0.15); color: var(--orange); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(217,120,87,0.3); margin-bottom: 28px; animation: pulse 3s ease infinite; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.08; color: #fff; margin-bottom: 20px; text-shadow: 0 2px 40px rgba(0,0,0,0.5); }
+    .hero h1 span { color: var(--orange); text-shadow: 0 0 40px rgba(217,120,87,0.4); }
+    .hero .sub { font-size: clamp(14px, 1.8vw, 17px); color: rgba(255,255,255,0.5); line-height: 1.65; max-width: 500px; margin: 0 auto; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+
+    .section { padding: 56px 24px; max-width: 720px; margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .section h2 { font-family: 'Syne', sans-serif; font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 28px; }
+
+    .systems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 500px) { .systems { grid-template-columns: 1fr; } }
+    .system-card { background: rgba(255,255,255,0.03); border-radius: 14px; border: 1px solid rgba(255,255,255,0.06); padding: 24px; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .system-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .system-icon { width: 40px; height: 40px; background: rgba(217,120,87,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .system-card h3 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .system-card p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    .results { display: flex; flex-direction: column; gap: 12px; }
+    .result-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, transform 0.2s; }
+    .result-item:hover { background: rgba(255,255,255,0.055); transform: translateX(4px); }
+    .result-avatar { width: 40px; height: 40px; background: rgba(217,120,87,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--orange); flex-shrink: 0; }
+    .result-content h4 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+    .result-content p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .result-tag { display: inline-block; background: rgba(217,120,87,0.1); color: var(--orange); font-size: 11px; padding: 3px 8px; border-radius: 6px; margin-top: 6px; }
+
+    .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 500px) { .included-grid { grid-template-columns: 1fr; } }
+    .included-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.4; padding: 14px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, transform 0.2s; }
+    .included-item:hover { background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+    .check { width: 18px; height: 18px; background: rgba(217,120,87,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .check-inner { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+    .guarantee-box { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 28px 32px; border: 1px solid rgba(255,255,255,0.07); text-align: center; max-width: 560px; margin: 0 auto; }
+    .guarantee-box h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .guarantee-box p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    .price-section { padding: 56px 24px 72px; max-width: 560px; margin: 0 auto; text-align: center; }
+    .price-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(217,120,87,0.3); border-radius: 20px; padding: 40px; animation: glow 4s ease infinite; }
+    .price-later { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .price-old { font-size: 14px; color: rgba(255,255,255,0.3); text-decoration: line-through; margin-bottom: 6px; }
+    .price-new { font-family: 'Syne', sans-serif; font-size: clamp(56px, 8vw, 80px); font-weight: 800; color: var(--orange); line-height: 1; text-shadow: 0 0 60px rgba(217,120,87,0.3); }
+    .price-label { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 6px; margin-bottom: 28px; }
+    .cta-btn { display: block; background: var(--orange); color: #fff; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; padding: 18px 32px; border-radius: 12px; text-align: center; cursor: pointer; border: none; width: 100%; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 24px rgba(217,120,87,0.35); transition: transform 0.15s, box-shadow 0.15s, background 0.15s; }
+    .cta-btn:hover { background: #c96a47; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(217,120,87,0.5); }
+    .skip-link { display: block; margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.2); text-decoration: none; cursor: pointer; }
+    .skip-link:hover { color: rgba(255,255,255,0.4); }
+
+    .faq { max-width: 720px; margin: 0 auto; padding: 0 24px 72px; }
+    .faq-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+    .faq-item { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0; }
+    .faq-q { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="oto-banner">
+    Offre spéciale — <span>Cette offre disparaît quand tu quittes cette page.</span>
+  </div>
+
+  <div class="hero">
+    <div class="badge fade-up d1">Internet Growth — Accompagnement</div>
+    <h1 class="fade-up d2">Accompagnement 1-to-1.<br>On construit ton<br><span>système ensemble.</span></h1>
+    <p class="sub fade-up d3">Je t'accompagne personnellement pour lancer ta présence en ligne, créer tes offres et vendre — de zéro à tes premiers clients.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Les 3 systèmes</div>
+    <h2>Tout ce dont tu as besoin pour exister en ligne et vendre.</h2>
+    <div class="systems">
+      <div class="system-card">
+        <div class="system-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#D97857" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="#D97857" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Visibilité</h3>
+        <p>Instagram, TikTok, YouTube Shorts. On construit ta présence là où sont tes clients.</p>
+      </div>
+      <div class="system-card">
+        <div class="system-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="10" rx="2" stroke="#D97857" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="#D97857" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Vente</h3>
+        <p>Tunnel de vente, page de vente, offre irrésistible. Tu transformes ta visibilité en revenus.</p>
+      </div>
+      <div class="system-card">
+        <div class="system-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-7" stroke="#D97857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Livraison</h3>
+        <p>Formation, coaching, service. On structure ton offre pour que tu puisses la délivrer sans friction.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Ils l'ont fait</div>
+    <h2>Des entrepreneurs qui ont déjà lancé avec moi.</h2>
+    <div class="results">
+      <div class="result-item">
+        <div class="result-avatar">T</div>
+        <div class="result-content">
+          <h4>2 thérapeutes</h4>
+          <p>Site WordPress professionnel + chaîne YouTube lancée. Présence en ligne complète créée de zéro.</p>
+          <span class="result-tag">Visibilité + Livraison</span>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-avatar">A</div>
+        <div class="result-content">
+          <h4>1 artisan</h4>
+          <p>Instagram, TikTok et YouTube Shorts actifs. Contenu régulier, nouvelle clientèle en ligne.</p>
+          <span class="result-tag">Visibilité</span>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-avatar">X</div>
+        <div class="result-content">
+          <h4>Xavier</h4>
+          <p>Compte Instagram lancé + premier info produit créé et vendu en ligne.</p>
+          <span class="result-tag">Visibilité + Vente + Livraison</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Ce que tu obtiens</div>
+    <h2>Un accompagnement sur mesure, pas un cours en ligne.</h2>
+    <div class="included-grid">
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Audit complet de ta situation actuelle</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Stratégie personnalisée sur les 3 systèmes</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Création de ta présence sur les réseaux</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Tunnel de vente et page de vente faits avec toi</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Structure de ton offre et de ta livraison</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Suivi jusqu'à tes premiers résultats</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="guarantee-box">
+      <h3>Accompagnement 100% personnalisé</h3>
+      <p>Ce n'est pas une formation. Je travaille directement avec toi, à ton rythme, sur ta situation. Chaque entrepreneur est différent — la stratégie aussi.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="price-section">
+    <div class="price-box">
+      <div class="price-later">Tarif normal</div>
+      <div class="price-old">1 500€</div>
+      <div class="price-new">500€</div>
+      <div class="price-label">Prix de lancement — réservé aux clients Post Scrolling</div>
+      <a href="LIEN_PAIEMENT_ICI" class="cta-btn">Oui, je veux l'accompagnement →</a>
+      <a href="LIEN_PAGE_MERCI" class="skip-link">Non merci, je continue sans accompagnement</a>
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-label">Questions fréquentes</div>
+    <div class="faq-item">
+      <div class="faq-q">C'est quoi exactement l'accompagnement ?</div>
+      <div class="faq-a">On travaille ensemble pour construire tes 3 systèmes — visibilité, vente et livraison. Ce n'est pas un cours en ligne, c'est un travail personnalisé sur ta situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Combien de temps ça prend ?</div>
+      <div class="faq-a">Ça dépend de ton point de départ. La plupart des entrepreneurs voient leurs premiers résultats en 4 à 8 semaines.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Pourquoi 500€ au lieu de 1500€ ?</div>
+      <div class="faq-a">Ce prix de lancement est réservé aux clients Post Scrolling uniquement. Il n'est disponible qu'une seule fois, sur cette page.</div>
+    </div>
+  </div>
+
+</body>
+</html>
