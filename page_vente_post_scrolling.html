@@ -1,0 +1,167 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --dark: #262624; --orange: #D97857; --cream: #F5F0E8; }
+body { font-family: 'DM Sans', sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
+
+.page { background: var(--dark); color: #fff; font-family: 'DM Sans', sans-serif; }
+
+.hero { background: var(--dark); padding: 48px 24px 40px; text-align: center; }
+.badge { display: inline-block; background: rgba(217,120,87,0.15); color: var(--orange); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(217,120,87,0.3); margin-bottom: 20px; }
+.hero h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; line-height: 1.1; color: #fff; margin-bottom: 16px; }
+.hero h1 span { color: var(--orange); }
+.hero .sub { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 320px; margin: 0 auto 28px; }
+
+.price-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(217,120,87,0.3); border-radius: 16px; padding: 24px; margin: 0 24px 32px; text-align: center; }
+.price-old { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: line-through; margin-bottom: 4px; }
+.price-new { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--orange); line-height: 1; }
+.price-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+.cta-btn { display: block; background: var(--orange); color: #fff; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; padding: 16px 24px; border-radius: 12px; text-align: center; text-decoration: none; margin: 16px 0 0; cursor: pointer; border: none; width: 100%; }
+.cta-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 8px; }
+
+.section { padding: 36px 24px; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+.section h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+
+.problem-list { display: flex; flex-direction: column; gap: 12px; }
+.problem-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 2px solid rgba(255,255,255,0.1); }
+.problem-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+.problem-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+.divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0 24px; }
+
+.included-list { display: flex; flex-direction: column; gap: 10px; }
+.included-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.4; }
+.check { width: 18px; height: 18px; background: rgba(217,120,87,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.check-inner { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+.steps { display: flex; flex-direction: column; gap: 16px; }
+.step { display: flex; gap: 14px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.step-content h3 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 3px; }
+.step-content p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+.guarantee { background: rgba(255,255,255,0.04); border-radius: 14px; padding: 20px; margin: 0 24px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
+.guarantee h3 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.guarantee p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+.footer-cta { padding: 36px 24px; text-align: center; }
+.footer-cta h2 { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.footer-cta h2 span { color: var(--orange); }
+.footer-cta p { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+
+.faq { padding: 0 24px 36px; }
+.faq-item { border-top: 1px solid rgba(255,255,255,0.07); padding: 16px 0; }
+.faq-q { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+.faq-a { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+</style>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="badge">Offre de lancement</div>
+    <h1>Arrête de perdre<br>des heures à monter<br>tes <span>Reels.</span></h1>
+    <p class="sub">Le seul outil qui génère tes sous-titres animés automatiquement — en 2 minutes, sans CapCut.</p>
+  </div>
+
+  <div class="price-box" style="margin: 0 24px 32px;">
+    <div class="price-old">Valeur réelle : 197€</div>
+    <div class="price-new">27€</div>
+    <div class="price-label">Prix de lancement — limité dans le temps</div>
+    <button class="cta-btn" onclick="openLink('https://systeme.io')">Obtenir l'accès maintenant</button>
+    <div class="cta-sub">Paiement sécurisé · Accès immédiat</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Le problème</div>
+    <h2>Tu postes moins parce que le montage te tue.</h2>
+    <div class="problem-list">
+      <div class="problem-item">
+        <svg class="problem-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="10" y1="6" x2="10" y2="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="13.5" r="0.8" fill="rgba(255,255,255,0.4)"/></svg>
+        <p class="problem-text">2 à 3h de montage sur CapCut pour 60 secondes de contenu</p>
+      </div>
+      <div class="problem-item">
+        <svg class="problem-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="10" y1="6" x2="10" y2="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="13.5" r="0.8" fill="rgba(255,255,255,0.4)"/></svg>
+        <p class="problem-text">Sous-titres manuels désynchronisés, à refaire 10 fois</p>
+      </div>
+      <div class="problem-item">
+        <svg class="problem-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="10" y1="6" x2="10" y2="11" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="13.5" r="0.8" fill="rgba(255,255,255,0.4)"/></svg>
+        <p class="problem-text">Tu postes une fois par semaine au lieu de chaque jour</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Ce que tu obtiens</div>
+    <h2>Post Scrolling — le skill + la formation.</h2>
+    <div class="included-list">
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Le skill Claude Code prêt à installer</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Sous-titres animés mot par mot, style TikTok</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Safe zones Instagram respectées automatiquement</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Export 1080x1920 prêt à poster</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Formation complète — installation en 5 minutes</div>
+      <div class="included-item"><div class="check"><div class="check-inner"></div></div>Mises à jour incluses à vie</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Comment ça marche</div>
+    <h2>3 étapes, c'est tout.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Tu filmes</h3>
+          <p>Avec ton iPhone, ta GoPro, peu importe. Tu filmes normalement.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Tu lances une commande</h3>
+          <p>Une seule ligne dans le terminal. Le skill fait tout le reste.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Tu postes</h3>
+          <p>Le fichier MP4 apparaît sur ton Bureau, prêt pour Instagram.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="guarantee">
+    <h3>Garantie 7 jours</h3>
+    <p>Si ça ne marche pas chez toi ou que tu n'es pas satisfait, tu es remboursé. Sans question.</p>
+  </div>
+
+  <div class="footer-cta">
+    <h2>Prêt à <span>poster plus</span><br>en moins de temps ?</h2>
+    <p>Prix de lancement à 27€ — disponible maintenant</p>
+    <button class="cta-btn" onclick="openLink('https://systeme.io')">Obtenir Post Scrolling →</button>
+  </div>
+
+  <div class="faq">
+    <div class="section-label" style="margin-bottom: 16px;">Questions fréquentes</div>
+    <div class="faq-item">
+      <div class="faq-q">Je ne suis pas développeur, ça marche quand même ?</div>
+      <div class="faq-a">Oui. La formation t'explique chaque étape comme si tu débutais. Tu n'as pas besoin de coder.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Ça marche sur Windows ?</div>
+      <div class="faq-a">Pour l'instant, le skill est optimisé pour Mac. Une version Windows est en cours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">C'est quoi le coût après l'achat ?</div>
+      <div class="faq-a">Deepgram offre 200h gratuites par mois. Pour un usage normal tu ne paies rien de plus.</div>
+    </div>
+  </div>
+
+</div>
